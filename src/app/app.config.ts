@@ -4,11 +4,13 @@ import { provideTanStackQuery, QueryClient } from '@tanstack/angular-query-exper
 
 import { routes } from './app.routes';
 import { withDevtools } from '@tanstack/angular-query-experimental/devtools';
+import { provideMarkdown } from 'ngx-markdown';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
     provideTanStackQuery(new QueryClient(), withDevtools()),
+    provideMarkdown(),
   ],
 };
