@@ -11,10 +11,22 @@
   </div>
 
   <div class="mt-4 flex flex-col col-span-2">
-    <h3>Issues</h3>
+    @for (issue of issuesQuery.data(); track issue.id) {
+      <issue-item [issue]="issue" />
+    } @empty {
+      @if (issuesQuery.isLoading()) {
+        <p>Cargando issues</p>
+      } @else {
+        <p>No hay issues que mostrar</p>
+      }
+    }
   </div>
 
   <div>
-    <h3>Labels</h3>
+    @if (labelsQuery.isLoading()) {
+      <p>Estamos cargando</p>
+    } @else {
+      <issues-labels-selector [labels]="labelsQuery.data() ?? []" />
+    }
   </div>
 </section>

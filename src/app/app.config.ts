@@ -1,13 +1,14 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { provideRouter } from '@angular/router';
-import { provideAngularQuery, QueryClient } from '@tanstack/angular-query-experimental';
+import { provideTanStackQuery, QueryClient } from '@tanstack/angular-query-experimental';
 
 import { routes } from './app.routes';
+import { withDevtools } from '@tanstack/angular-query-experimental/devtools';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
-    provideAngularQuery(new QueryClient()),
-  ]
+    provideTanStackQuery(new QueryClient(), withDevtools()),
+  ],
 };
