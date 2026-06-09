@@ -4,9 +4,27 @@
 <section class="grid grid-cols-1 lg:grid-cols-3 gap-2">
   <div class="col-span-3 flex flex-col">
     <div class="flex gap-2">
-      <button class="btn">All</button>
-      <button class="btn">Open</button>
-      <button class="btn">Closed</button>
+      <button
+        [class.active]="issuesSvc.selectedState() === 'all'"
+        class="btn"
+        (click)="onChangeState('all')"
+      >
+        All
+      </button>
+      <button
+        [class.active]="issuesSvc.selectedState() === 'open'"
+        class="btn"
+        (click)="onChangeState('open')"
+      >
+        Open
+      </button>
+      <button
+        [class.active]="issuesSvc.selectedState() === 'closed'"
+        class="btn"
+        (click)="onChangeState('closed')"
+      >
+        Closed
+      </button>
     </div>
   </div>
 
